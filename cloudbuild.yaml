@@ -31,7 +31,7 @@ steps:
   
   # Step 5: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:$SHORT_SHA', '.']
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}:$SHORT_SHA', 'Application-Code/frontend']
     id: 'build-image'
     waitFor: ['sonarqube-scan']
   
