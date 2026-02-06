@@ -2,11 +2,13 @@ steps:
   # Step 1: Install dependencies
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
+    dir: 'Application-Code/frontend'
     id: 'install-deps'
   
   # Step 2: Run Jest tests
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'test:ci']
+    dir: 'Application-Code/frontend'
     env:
       - 'CI=true'
     id: 'run-tests'
@@ -15,6 +17,7 @@ steps:
   # Step 3: Build React application
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
+    dir: 'Application-Code/frontend'
     timeout: '5m'
     id: 'build-app'
     waitFor: ['run-tests']
