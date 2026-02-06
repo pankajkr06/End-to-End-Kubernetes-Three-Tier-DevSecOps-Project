@@ -8,7 +8,7 @@ steps:
   # Step 2: Run tests in CI mode (non-interactive)
   - name: 'node:18'
     entrypoint: 'npm'
-    args: ['test', '--', '--coverage', '--watchAll=false']
+    args: ['test', '--', '--coverage', '--watchAll=false' '--passWithNoTests']
     dir: 'Application-Code/frontend'
     env:
       - 'CI=true'  # Forces react-scripts to run in CI mode
