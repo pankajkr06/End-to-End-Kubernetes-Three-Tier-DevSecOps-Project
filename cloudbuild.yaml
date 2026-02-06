@@ -22,7 +22,6 @@ steps:
       - '-Dsonar.host.url=http://35.214.252.38:9000'
       - '-Dsonar.login=$${SONAR_TOKEN}'
       - '-Dsonar.projectKey=apptest'
-      - '-Dsonar.projectName=Three-Tier-Frontend'
       - '-Dsonar.sources=src'
       - '-Dsonar.exclusions=**/node_modules/**,**/build/**,**/*.test.js'
     secretEnv: ['SONAR_TOKEN']
