@@ -19,17 +19,18 @@ steps:
     id: 'build-app'
     waitFor: ['run-tests']
   
-  # Step 4: SonarQube analysis
+# Step 4: SonarQube analysis
   - name: 'sonarsource/sonar-scanner-cli:latest'
     args:
-		- '-Dsonar.host.url=https://http://35.214.252.38:9000/'
-		- '-Dsonar.login=$${SONAR_TOKEN}'
-		- '-Dsonar.projectKey=apptest'
-		- '-Dsonar.sources=src'
-		- '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
-  secretEnv: ['SONAR_TOKEN']
-  id: 'sonarqube-scan'
-  waitFor: ['run-tests']
+      - '-Dsonar.host.url=http://35.214.252.38:9000'
+      - '-Dsonar.login=$${SONAR_TOKEN}'
+      - '-Dsonar.projectKey=apptest'
+      - '-Dsonar.sources=src'
+      - '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
+    secretEnv: ['SONAR_TOKEN']
+    id: 'sonarqube-scan'
+    waitFor: ['run-tests']
+
   
   # Step 5: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
