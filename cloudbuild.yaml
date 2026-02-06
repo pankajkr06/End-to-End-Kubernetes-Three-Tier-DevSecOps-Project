@@ -14,15 +14,7 @@ steps:
       - 'CI=true'
     id: 'run-tests'
     waitFor: ['install-deps']
-  
-  # Step 3: Build React application
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'build']
-    dir: 'Application-Code/frontend'
-    timeout: '5m'
-    id: 'build-app'
-    waitFor: ['run-tests']
-  
+   
 # Step 4: SonarQube analysis
   - name: 'sonarsource/sonar-scanner-cli:latest'
     args:
