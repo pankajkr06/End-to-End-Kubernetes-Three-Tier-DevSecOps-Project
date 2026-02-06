@@ -5,12 +5,13 @@ steps:
     dir: 'Application-Code/frontend'
     id: 'install-deps'
   
-  # Step 2: Run Jest tests
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'test:ci']
+  # Step 2: Run tests in CI mode (non-interactive)
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['test', '--', '--coverage', '--watchAll=false']
     dir: 'Application-Code/frontend'
     env:
-      - 'CI=true'
+      - 'CI=true'  # Forces react-scripts to run in CI mode
     id: 'run-tests'
     waitFor: ['install-deps']
   
