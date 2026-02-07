@@ -19,7 +19,7 @@ steps:
   - name: 'sonarsource/sonar-scanner-cli:latest'
     args:
       - '-Dsonar.projectBaseDir=/workspace/Application-Code/frontend'
-      - '-Dsonar.host.url=http://35.214.252.38:9000'
+      - '-Dsonar.host.url=http://35.214.179.129:9000'
       - '-Dsonar.login=$${SONAR_TOKEN}'
       - '-Dsonar.projectKey=testapp'
       - '-Dsonar.sources=src'
